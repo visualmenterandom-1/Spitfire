@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Air Tractor AT-802 Pilot Dossier | Stitch MCP Showcase</title>
+  <title>Air Tractor AT-802 Pilot Dossier (Light Edition) | Stitch MCP Showcase</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
@@ -13,13 +13,19 @@
       theme: {
         extend: {
           colors: {
-            cockpit: {
-              900: '#070b14',
-              800: '#0B1120',
-              700: '#111827',
+            aero: {
+              50: '#F8FAFC',
+              100: '#F1F5F9',
+              200: '#E2E8F0',
+              300: '#CBD5E1',
+              500: '#64748B',
+              600: '#475569',
+              700: '#334155',
+              800: '#1E293B',
+              900: '#0F172A',
             },
             aviation: {
-              amber: '#F59E0B',
+              amber: '#D97706',
               crimson: '#DC2626',
             }
           },
@@ -33,26 +39,25 @@
     }
   </script>
 </head>
-<body class="bg-cockpit-800 text-slate-100 font-sans min-h-screen flex flex-col">
+<body class="bg-aero-50 text-aero-800 font-sans min-h-screen flex flex-col">
 
   <!-- Header -->
-  <header class="bg-cockpit-900 border-b border-slate-800 sticky top-0 z-50">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded border border-amber-500/40 bg-cockpit-800 flex items-center justify-center font-mono font-bold text-amber-500">
+        <div class="w-11 h-11 rounded border border-amber-500/50 bg-amber-50 flex items-center justify-center font-mono font-bold text-amber-700 shadow-xs">
           LC
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <h1 class="font-display text-lg sm:text-xl font-bold tracking-wide text-white">Air Tractor AT-802 Pilot Dossier</h1>
-            <span class="px-2 py-0.5 text-xs font-mono rounded bg-amber-500/20 text-amber-300 border border-amber-500/40">Stitch MCP</span>
+            <h1 class="font-display text-lg sm:text-xl font-bold tracking-wide text-aero-900">Air Tractor AT-802 Pilot Dossier</h1>
+            <span class="px-2 py-0.5 text-xs font-mono font-semibold rounded bg-amber-100 text-amber-800 border border-amber-300">LIGHT EDITION • Stitch MCP</span>
           </div>
-          <p class="text-xs font-mono text-slate-400">TC. Luis Anderson Carrero Pérez • Proyecto ID: 13694640903286686461</p>
+          <p class="text-xs font-mono text-aero-500">TC. Luis Anderson Carrero Pérez • Proyecto ID: 13694640903286686461</p>
         </div>
       </div>
       <div class="flex items-center gap-3 font-mono text-xs">
-        <a href="index.html" class="px-4 py-2 rounded bg-aviation-amber text-slate-950 font-bold hover:bg-amber-400 transition">Ver Dark Edition</a>
-        <a href="light.html" class="px-4 py-2 rounded bg-white text-slate-900 font-bold hover:bg-slate-200 transition">Ver Light Edition</a>
+        <a href="index.html" class="px-4 py-2.5 rounded bg-amber-600 text-white font-bold hover:bg-amber-500 transition shadow-sm">Abrir Website Oficial (index.html)</a>
       </div>
     </div>
   </header>
@@ -60,70 +65,45 @@
   <!-- Main Content -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="mb-10">
-      <div class="text-xs font-mono text-aviation-amber uppercase tracking-widest mb-1">STITCH MCP SYNCHRONIZATION</div>
-      <h2 class="font-display text-3xl font-bold text-white">Catálogo de Pantallas & Assets</h2>
-      <p class="text-slate-400 text-sm mt-1">Pantallas oficiales y recursos descargados directamente desde Google Stitch MCP (`projects/13694640903286686461`).</p>
+      <div class="text-xs font-mono font-bold text-amber-700 uppercase tracking-widest mb-1">STITCH MCP SYNCHRONIZATION</div>
+      <h2 class="font-display text-3xl font-bold text-aero-900">Diseño Activo: Light Aeronautical Dossier</h2>
+      <p class="text-aero-600 text-sm mt-1">Pantalla principal y recursos sincronizados desde Google Stitch MCP (`projects/13694640903286686461`).</p>
     </div>
 
-    <!-- Screens Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-      <!-- Screen 1: Dark Edition -->
-      <div class="bg-cockpit-700 border border-slate-800 rounded-xl overflow-hidden shadow-xl flex flex-col">
-        <div class="relative aspect-video bg-cockpit-900 border-b border-slate-800 overflow-hidden group">
-          <img src="screenshots/dossier-dark-desktop.png" alt="Portafolio Ejecutivo AT-802 (Dark)" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-          <span class="absolute top-3 left-3 bg-cockpit-900/90 border border-amber-500/40 text-amber-400 px-2.5 py-1 rounded text-xs font-mono">DESKTOP • DARK COCKPIT (2560x12068)</span>
-        </div>
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="font-display text-xl font-bold text-white mb-1">LTC Luis Carrero - Portafolio Ejecutivo AT-802</h3>
-            <p class="text-xs font-mono text-slate-500 mb-3">Screen ID: 2dbd47aa1e0a4967a728b1a8d0831501</p>
-            <p class="text-sm text-slate-300 leading-relaxed">Diseño principal con estética HUD de cabina nocturna (`#0B1120`), acentos ámbar aeronáutico (`#F59E0B`) y rojo retardante (`#DC2626`). Incluye telemetría de 5,215 horas de vuelo, matriz operacional AT-802, línea de tiempo y formulario de despacho.</p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center gap-3 font-mono text-xs">
-            <a href="index.html" target="_blank" class="flex-1 text-center py-2.5 bg-aviation-amber text-slate-950 font-bold rounded hover:bg-amber-400 transition">Abrir Sitio (index.html)</a>
-            <a href="screens/dossier-dark-desktop.html" target="_blank" class="px-4 py-2.5 bg-slate-800 text-slate-200 rounded hover:bg-slate-700 transition">Screen Raw</a>
-            <a href="screenshots/dossier-dark-desktop.png" target="_blank" class="px-4 py-2.5 bg-slate-800 text-slate-200 rounded hover:bg-slate-700 transition">Captura PNG</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Screen 2: Light Edition -->
-      <div class="bg-cockpit-700 border border-slate-800 rounded-xl overflow-hidden shadow-xl flex flex-col">
-        <div class="relative aspect-video bg-slate-100 border-b border-slate-800 overflow-hidden group">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Screen: Light Edition -->
+      <div class="lg:col-span-7 bg-white border border-slate-200 rounded-xl overflow-hidden shadow-md flex flex-col">
+        <div class="relative aspect-video bg-slate-100 border-b border-slate-200 overflow-hidden group">
           <img src="screenshots/dossier-light-desktop.png" alt="Portafolio Ejecutivo AT-802 (Light Edition)" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-          <span class="absolute top-3 left-3 bg-white/95 border border-slate-300 text-amber-700 px-2.5 py-1 rounded text-xs font-mono font-bold">DESKTOP • LIGHT EDITION (2560x13274)</span>
+          <span class="absolute top-3 left-3 bg-white/95 border border-slate-300 text-amber-700 px-2.5 py-1 rounded text-xs font-mono font-bold shadow-xs">DESKTOP • LIGHT EDITION (2560x13274)</span>
         </div>
-        <div class="p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 class="font-display text-xl font-bold text-white mb-1">LTC Luis Carrero - Portafolio Ejecutivo AT-802 (Light Edition)</h3>
-            <p class="text-xs font-mono text-slate-500 mb-3">Screen ID: ce3f045c7f4f4cc390c0340d2ccf31bc</p>
-            <p class="text-sm text-slate-300 leading-relaxed">Edición clara de alta precisión estilo manual técnico y carta aeronáutica, enriquecida con indicadores radiales SVG, micro-infografías de caudal SEAT, barra de luces SATLOC G4, gráfico donut de distribución de mando y credenciales tipo chip.</p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center gap-3 font-mono text-xs">
-            <a href="light.html" target="_blank" class="flex-1 text-center py-2.5 bg-white text-slate-900 font-bold rounded hover:bg-slate-200 transition">Abrir Sitio (light.html)</a>
-            <a href="screens/dossier-light-desktop.html" target="_blank" class="px-4 py-2.5 bg-slate-800 text-slate-200 rounded hover:bg-slate-700 transition">Screen Raw</a>
-            <a href="screenshots/dossier-light-desktop.png" target="_blank" class="px-4 py-2.5 bg-slate-800 text-slate-200 rounded hover:bg-slate-700 transition">Captura PNG</a>
+        <div class="p-6">
+          <h3 class="font-display text-xl font-bold text-aero-900 mb-1">LTC Luis Carrero - Portafolio Ejecutivo AT-802 (Light Edition)</h3>
+          <p class="text-xs font-mono text-aero-500 mb-3">Screen ID: ce3f045c7f4f4cc390c0340d2ccf31bc</p>
+          <p class="text-sm text-aero-600 leading-relaxed">Paleta clara de alta precisión estilo manual técnico y carta aeronáutica (`#FFFFFF` / `#F8FAFC`), tipografía `Space Grotesk`, `Inter` y `JetBrains Mono`, acentos ámbar (`#D97706`), rojo retardante (`#DC2626`), azul HUD (`#0284C7`) y verde esmeralda (`#059669`).</p>
+          <div class="mt-6 pt-4 border-t border-slate-200 flex items-center gap-3 font-mono text-xs">
+            <a href="index.html" target="_blank" class="flex-1 text-center py-2.5 bg-amber-600 text-white font-bold rounded hover:bg-amber-500 transition shadow-sm">Abrir Sitio Principal (index.html)</a>
+            <a href="screens/dossier-light-desktop.html" target="_blank" class="px-4 py-2.5 bg-slate-100 border border-slate-300 text-aero-800 font-semibold rounded hover:bg-slate-200 transition">Screen Raw</a>
+            <a href="screenshots/dossier-light-desktop.png" target="_blank" class="px-4 py-2.5 bg-slate-100 border border-slate-300 text-aero-800 font-semibold rounded hover:bg-slate-200 transition">Captura PNG</a>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Hero Image Asset -->
-    <div class="border-t border-slate-800 pt-10">
-      <h3 class="font-display text-2xl font-bold text-white mb-2">Asset Fotográfico Principal</h3>
-      <p class="text-slate-400 text-sm mb-6">Screen ID: <code class="font-mono text-amber-400">f44ac295a324467c803581e750d1f8d1</code> (1376x768 PNG)</p>
-      <div class="bg-cockpit-700 border border-slate-800 rounded-xl p-4 max-w-3xl">
-        <img src="assets/at802-aerial-firefighting-hero.png" alt="Air Tractor AT-802 Hero" class="w-full rounded-lg border border-slate-700">
-        <div class="mt-3 flex items-center justify-between text-xs font-mono text-slate-400">
+      <!-- Hero Image Asset -->
+      <div class="lg:col-span-5 bg-white border border-slate-200 rounded-xl p-6 shadow-md">
+        <h3 class="font-display text-xl font-bold text-aero-900 mb-1">Asset Fotográfico Principal</h3>
+        <p class="text-aero-500 text-xs font-mono mb-4">Screen ID: f44ac295a324467c803581e750d1f8d1 (1376x768 PNG)</p>
+        <img src="assets/at802-aerial-firefighting-hero.png" alt="Air Tractor AT-802 Hero" class="w-full rounded-lg border border-slate-200 shadow-xs">
+        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-aero-600">
           <span>assets/at802-aerial-firefighting-hero.png</span>
-          <a href="assets/at802-aerial-firefighting-hero.png" target="_blank" class="text-aviation-amber hover:underline">Abrir imagen original →</a>
+          <a href="assets/at802-aerial-firefighting-hero.png" target="_blank" class="text-amber-700 font-bold hover:underline">Ver original →</a>
         </div>
       </div>
     </div>
   </main>
 
-  <footer class="bg-cockpit-900 border-t border-slate-800 py-8 text-center font-mono text-xs text-slate-500">
-    Proyecto sincronizado desde Google Stitch MCP • Listo para despliegue en GitHub y Hostinger
+  <footer class="bg-white border-t border-slate-200 py-8 text-center font-mono text-xs text-aero-500">
+    Proyecto sincronizado desde Google Stitch MCP • Repositorio GitHub: visualmenterandom-1/Spitfire
   </footer>
 </body>
 </html>

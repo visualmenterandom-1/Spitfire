@@ -1,9 +1,9 @@
 {
   "name": "TC. Luis Anderson Carrero Pérez | Air Tractor AT-802 Pilot Dossier",
   "short_name": "AT-802 Dossier",
-  "description": "Portafolio Ejecutivo y Dossier Operacional Air Tractor AT-802 (SEAT / MTP / Instructor)",
-  "theme_color": "#0B1120",
-  "background_color": "#0B1120",
+  "description": "Portafolio Ejecutivo y Dossier Operacional Air Tractor AT-802 (SEAT / MTP / Instructor) - Light Edition",
+  "theme_color": "#FFFFFF",
+  "background_color": "#F8FAFC",
   "display": "standalone",
   "start_url": "/"
 }
