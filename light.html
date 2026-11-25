@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TC. Luis Anderson Carrero Pérez | Air Tractor AT-802 Command Pilot &amp; MTP</title>
+<!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration for Aeronautical Precision Light Theme -->
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            aero: {
+              50: '#F8FAFC',
+              100: '#F1F5F9',
+              200: '#E2E8F0',
+              300: '#CBD5E1',
+              400: '#94A3B8',
+              500: '#64748B',
+              600: '#475569',
+              700: '#334155',
+              800: '#1E293B',
+              900: '#0F172A',
+            },
+            aviation: {
+              amber: '#D97706',
+              'amber-bright': '#F59E0B',
+              'amber-soft': '#FEF3C7',
+              crimson: '#DC2626',
+              'crimson-soft': '#FEE2E2',
+              hud: '#0284C7',
+              'hud-soft': '#E0F2FE',
+              emerald: '#059669',
+              'emerald-soft': '#D1FAE5',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          backgroundImage: {
+            'grid-pattern-light': "linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px)",
+            'flight-paper': "radial-gradient(#CBD5E1 1px, transparent 1px)",
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Technical Avionics Styles -->
+<style data-purpose="hud-aesthetic-light">
+    .hud-grid-overlay {
+      background-size: 32px 32px;
+    }
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F8FAFC;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D97706;
+    }
+    /* Esquinas milimétricas de plano técnico */
+    .blueprint-corner {
+      position: relative;
+    }
+    .blueprint-corner::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid #D97706;
+      border-left: 2px solid #D97706;
+      z-index: 10;
+    }
+    .blueprint-corner::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 10px;
+      height: 10px;
+      border-bottom: 2px solid #D97706;
+      border-right: 2px solid #D97706;
+      z-index: 10;
+    }
+    /* Anillos métricos de aviónica */
+    .gauge-circle {
+      stroke-dasharray: 283;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+  </style>
+<!-- END: Custom Technical Avionics Styles -->
+</head>
+<body class="bg-white text-aero-800 font-sans antialiased selection:bg-amber-400 selection:text-aero-900 bg-grid-pattern-light hud-grid-overlay">
+<!-- BEGIN: StickyHUDHeader (Light Clean) -->
+<header class="sticky top-0 z-50 backdrop-blur-md bg-white/92 border-b border-slate-200/90 shadow-sm" data-purpose="main-navigation">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<!-- Identificador Operacional / Monograma -->
+<a aria-label="Ir al inicio" class="flex items-center gap-3 group focus:outline-none" href="#hero">
+<div class="w-10 h-10 rounded border border-amber-500/50 bg-amber-50 flex items-center justify-center font-mono font-bold text-amber-700 shadow-sm group-hover:bg-amber-100 group-hover:border-amber-600 transition-colors">
+          LC
+        </div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-display font-bold text-base tracking-wider text-aero-900">LTC. L. CARRERO</span>
+<span class="text-xs font-mono text-amber-700 bg-amber-100/70 px-1.5 py-0.5 rounded font-semibold">// AT-802</span>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+</span>
+<span class="font-mono text-[10px] tracking-widest text-emerald-700 uppercase font-semibold">SYS: TELEMETRY ACTIVE</span>
+</div>
+</div>
+</a>
+<!-- Menú de Enlaces HUD -->
+<nav aria-label="Navegación Primaria" class="hidden md:flex items-center space-x-7 text-xs font-mono tracking-wider uppercase font-semibold">
+<a class="text-aero-600 hover:text-amber-600 transition-colors" href="#perfil">01// Perfil</a>
+<a class="text-aero-600 hover:text-amber-600 transition-colors" href="#capacidades">02// Capacidades AT-802</a>
+<a class="text-aero-600 hover:text-amber-600 transition-colors" href="#telemetria">03// Telemetría &amp; Horas</a>
+<a class="text-aero-600 hover:text-amber-600 transition-colors" href="#trayectoria">04// Trayectoria</a>
+<a class="text-aero-600 hover:text-amber-600 transition-colors" href="#certificaciones">05// Certificaciones</a>
+</nav>
+<!-- CTA & Idioma Selector -->
+<div class="flex items-center gap-4">
+<a href="index.html" title="Cambiar a Edición Cabina Nocturna (Dark Cockpit)" class="inline-flex items-center gap-1.5 border border-slate-300 hover:border-amber-600 bg-slate-100 hover:bg-amber-50 rounded px-2.5 py-1 text-xs font-mono text-aero-700 hover:text-amber-700 transition-colors shadow-xs">
+  <svg aria-hidden="true" class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+  <span>DARK COCKPIT</span>
+</a>
+<div aria-label="Selector de idioma" class="hidden sm:flex items-center border border-slate-300 rounded px-2.5 py-1 text-xs font-mono bg-white shadow-xs">
+<span class="text-amber-700 font-bold">ES</span>
+<span class="mx-1 text-slate-300">|</span>
+<span class="text-slate-500 hover:text-aero-900 cursor-pointer">EN</span>
+</div>
+<a class="relative inline-flex items-center justify-center px-4 py-2.5 text-xs font-mono font-bold uppercase tracking-wider text-white bg-amber-600 hover:bg-amber-500 active:bg-amber-700 transition-all duration-200 rounded border border-amber-600 shadow-sm" href="#contacto">
+<svg aria-hidden="true" class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+          Solicitar Dossier
+        </a>
+</div>
+</div>
+</div>
+</header>
+<!-- END: StickyHUDHeader -->
+<main>
+<!-- BEGIN: HeroSection (Light Aeronautical Dossier) -->
+<section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden border-b border-slate-200 bg-white" data-purpose="hero-cover" id="hero">
+<!-- Background Image with Soft Vignette & Gradient into White -->
+<div class="absolute inset-0 z-0 opacity-45">
+<img alt="Air Tractor AT-802 firefighting aircraft dropping crimson fire retardant water spray over rugged mountain terrain at dusk with telemetry overlay" class="w-full h-full object-cover object-center filter saturate-[1.1] contrast-[1.05]" src="assets/at802-aerial-firefighting-hero.png"/>
+<div class="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-white/30"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/70"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center sm:text-left flex flex-col justify-center">
+<!-- Eyebrow Badge -->
+<div class="inline-flex items-center gap-2 self-center sm:self-start px-3.5 py-1.5 rounded-md bg-white border border-slate-300 shadow-xs text-xs font-mono tracking-widest text-aero-700 mb-6">
+<span class="text-amber-700 font-bold">ICAO ATP-CPL</span>
+<span class="text-slate-300">•</span>
+<span class="text-aero-800 font-semibold">OACI ENGLISH LEVEL 4</span>
+<span class="text-slate-300">•</span>
+<span class="text-emerald-700 font-bold inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> 22 AÑOS DE SERVICIO
+        </span>
+</div>
+<!-- H1 Principal -->
+<h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tight text-aero-900 max-w-5xl leading-[1.08] mb-4">
+        Teniente Coronel <br class="hidden sm:inline"/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-aero-900 via-aero-800 to-amber-700">
+          Luis Anderson Carrero Pérez
+        </span>
+</h1>
+<!-- Subtítulo Profesional de Cabina -->
+<p class="font-mono text-sm sm:text-lg lg:text-xl text-amber-700 max-w-4xl font-semibold tracking-wide mb-6">
+        AT-802 Aerial Firefighting (SEAT) // Certified Maintenance Test Pilot (MTP) // Standardization Instructor
+      </p>
+<!-- Párrafo Ejecutivo -->
+<p class="text-aero-600 text-base sm:text-lg max-w-3xl leading-relaxed mb-10 font-normal">
+        Más de 15 años de experiencia operativa y <strong class="text-aero-900 font-bold">5.215 horas de vuelo</strong> en aeronaves monomotor y multimotor turbohélice. Liderazgo comprobado en misiones críticas de combate de incendios, evaluación funcional de motores <strong class="text-aero-900 font-semibold">P&amp;WC PT-6</strong>, instrucción táctica y gestión de seguridad operacional para la Aviación Policial de Colombia y el Ala Aérea INL del Departamento de Estado de EE. UU.
+      </p>
+<!-- CTA Buttons -->
+<div class="flex flex-col sm:flex-row items-center gap-4 mb-14 sm:self-start">
+<a class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-sm font-mono font-bold uppercase tracking-wider text-white bg-amber-600 hover:bg-amber-500 transition-all rounded shadow-md hover:shadow-lg hover:-translate-y-0.5" href="#contacto">
+<svg aria-hidden="true" class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+          Descargar Hoja de Vida / Licencias
+        </a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-sm font-mono font-semibold uppercase tracking-wider text-aero-800 hover:text-aero-900 bg-white hover:bg-slate-50 border border-slate-300 hover:border-slate-400 transition-all rounded shadow-xs" href="#contacto">
+<svg aria-hidden="true" class="w-4 h-4 mr-2 text-amber-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+          Contacto Operativo
+        </a>
+</div>
+<!-- Quick Flight Strip: Enhanced Avionics Gauges & Indicators -->
+<div class="blueprint-corner w-full max-w-5xl bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-md" data-purpose="quick-flight-strip">
+<div class="flex items-center justify-between pb-3 mb-5 border-b border-slate-200 text-[11px] font-mono tracking-widest text-aero-500">
+<span class="flex items-center gap-2 font-bold text-aero-700">
+<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+            FLIGHT LOG SUMMARY TELEMETRY
+          </span>
+<span class="text-amber-700 font-bold bg-amber-50 border border-amber-200 px-2 py-0.5 rounded">AIR TRACTOR SERIES SPEC</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+<!-- Metric Gauge 1: 5,215 hrs -->
+<div class="bg-aero-50 border border-slate-200 rounded-lg p-4 flex items-center justify-between relative overflow-hidden">
+<div class="z-10">
+<span class="text-[10px] font-mono tracking-wider text-aero-500 uppercase font-semibold block">Tiempo Total Vuelo</span>
+<div class="font-mono text-2xl lg:text-3xl font-bold text-aero-900 tracking-tight mt-0.5">5,215 <span class="text-xs text-amber-700 font-bold">HRS</span></div>
+<span class="text-[10px] font-mono text-aero-500 block mt-1">Monomotor &amp; Multimotor</span>
+</div>
+<!-- Micro Circular Gauge SVG -->
+<div class="relative w-14 h-14 flex items-center justify-center">
+<svg class="w-14 h-14" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="42" stroke="#E2E8F0" stroke-width="8"></circle>
+<circle class="gauge-circle" cx="50" cy="50" fill="none" r="42" stroke="#D97706" stroke-dashoffset="30" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<span class="absolute font-mono text-[9px] font-bold text-amber-700">100%</span>
+</div>
+</div>
+<!-- Metric Gauge 2: 3,769 hrs Turbina -->
+<div class="bg-aero-50 border border-slate-200 rounded-lg p-4 flex items-center justify-between relative overflow-hidden">
+<div class="z-10">
+<span class="text-[10px] font-mono tracking-wider text-aero-500 uppercase font-semibold block">Turbina &amp; Tailwheel</span>
+<div class="font-mono text-2xl lg:text-3xl font-bold text-aero-900 tracking-tight mt-0.5">3,769 <span class="text-xs text-aero-500 font-semibold">HRS</span></div>
+<span class="text-[10px] font-mono text-aero-500 block mt-1">Turbine Tailwheel Rating</span>
+</div>
+<!-- Micro Circular Gauge SVG -->
+<div class="relative w-14 h-14 flex items-center justify-center">
+<svg class="w-14 h-14" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="42" stroke="#E2E8F0" stroke-width="8"></circle>
+<circle class="gauge-circle" cx="50" cy="50" fill="none" r="42" stroke="#0284C7" stroke-dashoffset="78" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<span class="absolute font-mono text-[9px] font-bold text-sky-700">72%</span>
+</div>
+</div>
+<!-- Metric Gauge 3: 3,129 hrs PIC -->
+<div class="bg-aero-50 border border-slate-200 rounded-lg p-4 flex items-center justify-between relative overflow-hidden">
+<div class="z-10">
+<span class="text-[10px] font-mono tracking-wider text-aero-500 uppercase font-semibold block">Piloto al Mando (PIC)</span>
+<div class="font-mono text-2xl lg:text-3xl font-bold text-aero-900 tracking-tight mt-0.5">3,129 <span class="text-xs text-aero-500 font-semibold">HRS</span></div>
+<span class="text-[10px] font-mono text-aero-500 block mt-1">Mando Táctico &amp; MTP</span>
+</div>
+<!-- Micro Circular Gauge SVG -->
+<div class="relative w-14 h-14 flex items-center justify-center">
+<svg class="w-14 h-14" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="42" stroke="#E2E8F0" stroke-width="8"></circle>
+<circle class="gauge-circle" cx="50" cy="50" fill="none" r="42" stroke="#059669" stroke-dashoffset="113" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<span class="absolute font-mono text-[9px] font-bold text-emerald-700">60%</span>
+</div>
+</div>
+<!-- Metric Gauge 4: 338 Drops SEAT -->
+<div class="bg-red-50/60 border border-red-200 rounded-lg p-4 flex items-center justify-between relative overflow-hidden">
+<div class="z-10">
+<div class="flex items-center gap-1.5">
+<span class="text-[10px] font-mono tracking-wider text-red-700 uppercase font-bold">Descargas SEAT</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
+</div>
+<div class="font-mono text-2xl lg:text-3xl font-bold text-red-700 tracking-tight mt-0.5">338 <span class="text-xs text-red-600 font-bold">DROPS</span></div>
+<span class="text-[10px] font-mono text-red-600/80 block mt-1">Extinción Fuego Directo</span>
+</div>
+<!-- Droplet Retardant Graphic Badge -->
+<div class="w-12 h-12 rounded-full bg-red-100 border border-red-300 flex items-center justify-center text-red-600 font-bold text-xs shadow-inner">
+<svg class="w-6 h-6 text-red-600" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: SpecializedCapabilitiesBentoGrid (Infographic & Technical Clean) -->
+<section class="py-24 bg-white relative border-b border-slate-200" data-purpose="capabilities-grid" id="capacidades">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="text-center sm:text-left mb-16">
+<div class="inline-flex items-center gap-2 font-mono text-xs text-amber-700 tracking-widest uppercase mb-2 bg-amber-50 border border-amber-200 px-3 py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-amber-600"></span>
+          Matriz Operacional Especializada
+        </div>
+<h2 class="font-display text-3xl sm:text-4xl font-bold text-aero-900 tracking-tight">
+          Capacidades de Mando Línea Air Tractor AT-802
+        </h2>
+<p class="text-aero-600 max-w-2xl text-sm sm:text-base mt-2 font-normal">
+          Habilidades tácticas, técnicas y de evaluación aeronáutica desarrolladas en los escenarios de mayor exigencia topográfica y meteorológica.
+        </p>
+</div>
+<!-- Bento Grid 2x3 Enriched with Flight Gauges & Diagrams -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Tarjeta 1: Extinción de Incendios SEAT + Flow Gauge -->
+<article class="bg-white border border-slate-200 hover:border-red-400 rounded-xl p-7 transition-all duration-300 hover:shadow-md flex flex-col justify-between group" data-purpose="capability-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-lg bg-red-50 border border-red-200 flex items-center justify-center text-red-600 group-hover:scale-105 transition-transform">
+<svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-mono text-xs px-2.5 py-1 rounded bg-red-100 text-red-800 font-bold border border-red-200">SEAT COMBAT</span>
+</div>
+<h3 class="font-display text-xl font-bold text-aero-900 mb-2">Extinción de Incendios Forestales (SEAT)</h3>
+<p class="text-aero-600 text-sm leading-relaxed mb-4">
+              Operaciones Single Engine Air Tanker en AT-802 con <strong class="text-aero-900">338 descargas de retardante</strong> contabilizadas en combate de incendios. Maniobras a baja cota en cañones montañosos complejos, gestión de masa y gradiente de ascenso crítico.
+            </p>
+<!-- Technical Micro-Infographic: Retardant Drop Gate Indicator -->
+<div class="bg-red-50/70 border border-red-100 rounded-lg p-3 my-3">
+<div class="flex items-center justify-between text-[11px] font-mono text-red-900 font-bold mb-1">
+<span>SEAT HOPPER FLOW: 800 GAL</span>
+<span class="text-red-700">LVL 4 SALVO</span>
+</div>
+<div class="w-full bg-red-200 h-2 rounded-full overflow-hidden">
+<div class="bg-red-600 h-full rounded-full" style="width: 88%"></div>
+</div>
+<div class="flex justify-between text-[9px] font-mono text-red-600 mt-1">
+<span>0 GPM</span>
+<span>DISCHARGE APERTURE: 100%</span>
+<span>MAX COVERAGE</span>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-200 font-mono text-xs text-aero-600 flex items-center justify-between">
+<span>Formación en Equipo:</span>
+<span class="text-red-700 font-bold bg-red-50 px-2 py-0.5 rounded border border-red-200">420 HRS</span>
+</div>
+</article>
+<!-- Tarjeta 2: Maintenance Test Pilot (MTP) + Envelope Limit Test -->
+<article class="bg-white border border-slate-200 hover:border-amber-400 rounded-xl p-7 transition-all duration-300 hover:shadow-md flex flex-col justify-between group" data-purpose="capability-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 group-hover:scale-105 transition-transform">
+<svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-mono text-xs px-2.5 py-1 rounded bg-amber-100 text-amber-900 font-bold border border-amber-200">CERTIFIED MTP</span>
+</div>
+<h3 class="font-display text-xl font-bold text-aero-900 mb-2">Piloto de Pruebas (MTP) &amp; Estandarización</h3>
+<p class="text-aero-600 text-sm leading-relaxed mb-4">
+              Vuelos de comprobación funcional post-mantenimiento mayor, pruebas de rigidez estructural, verificación de límites envolventes de vuelo y certificación de aeronavegabilidad de flota según estándares del Departamento de Estado (INL).
+            </p>
+<!-- Technical Micro-Infographic: Flight Envelope Matrix -->
+<div class="bg-amber-50/60 border border-amber-200/80 rounded-lg p-3 my-3 font-mono text-[10px]">
+<div class="flex justify-between text-amber-900 font-bold mb-1">
+<span>Vne / Vno ENVELOPE VERIFIED</span>
+<span class="text-emerald-700">● PASS CERT</span>
+</div>
+<div class="grid grid-cols-3 gap-1 text-center text-[9px] pt-1 border-t border-amber-200">
+<div class="bg-white rounded py-1 border border-amber-100"><strong class="text-aero-800">TRIM:</strong> 0.0°</div>
+<div class="bg-white rounded py-1 border border-amber-100"><strong class="text-aero-800">G-LOAD:</strong> +3.8g</div>
+<div class="bg-white rounded py-1 border border-amber-100"><strong class="text-aero-800">TORQUE:</strong> MAX</div>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-200 font-mono text-xs text-aero-600 flex items-center justify-between">
+<span>Vuelos de Prueba MTP:</span>
+<span class="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">265 HRS</span>
+</div>
+</article>
+<!-- Tarjeta 3: P&WC PT-6 & Jefatura Mantenimiento + Turbine Diagram -->
+<article class="bg-white border border-slate-200 hover:border-sky-400 rounded-xl p-7 transition-all duration-300 hover:shadow-md flex flex-col justify-between group" data-purpose="capability-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-center text-sky-700 group-hover:scale-105 transition-transform">
+<svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-mono text-xs px-2.5 py-1 rounded bg-sky-100 text-sky-900 font-bold border border-sky-200">TURBINE LEAD</span>
+</div>
+<h3 class="font-display text-xl font-bold text-aero-900 mb-2">Especialista P&amp;WC PT-6 &amp; Jefe de Mantenimiento</h3>
+<p class="text-aero-600 text-sm leading-relaxed mb-4">
+              Más de 12 años operando motores Pratt &amp; Whitney PT6-67AG y PT6A-65R. 4+ años como Jefe de Mantenimiento Aeronáutico bajo normativas FAA y cumplimiento estricto de lineamientos U.S. Army DA-PAM 738-751 / TAMMS-A.
+            </p>
+<!-- Technical Micro-Infographic: Turbine Parameter Strip -->
+<div class="bg-sky-50/70 border border-sky-200/80 rounded-lg p-3 my-3 font-mono text-[10px]">
+<div class="flex justify-between text-sky-900 font-bold mb-1">
+<span>PT6A-67AG OPERATING RANGE</span>
+<span class="text-sky-700">1,350 SHP</span>
+</div>
+<div class="flex items-center gap-2 text-[9px] text-aero-700">
+<span>ITT 780°C</span>
+<div class="flex-1 bg-slate-200 h-1.5 rounded-full overflow-hidden">
+<div class="bg-sky-600 h-full w-3/4"></div>
+</div>
+<span>Ng 101.5%</span>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-200 font-mono text-xs text-aero-600 flex items-center justify-between">
+<span>Experiencia en Turbina:</span>
+<span class="text-aero-900 font-bold bg-slate-100 px-2 py-0.5 rounded border border-slate-300">12+ AÑOS</span>
+</div>
+</article>
+<!-- Tarjeta 4: Instrucción & Simulador + Horizon Artificial Indicator -->
+<article class="bg-white border border-slate-200 hover:border-emerald-400 rounded-xl p-7 transition-all duration-300 hover:shadow-md flex flex-col justify-between group" data-purpose="capability-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 group-hover:scale-105 transition-transform">
+<svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-mono text-xs px-2.5 py-1 rounded bg-emerald-100 text-emerald-900 font-bold border border-emerald-200">INSTRUCTOR PILOT</span>
+</div>
+<h3 class="font-display text-xl font-bold text-aero-900 mb-2">Instrucción de Vuelo &amp; Simulador Avanzado</h3>
+<p class="text-aero-600 text-sm leading-relaxed mb-4">
+              Instructor estandarizador de procedimientos normales, anormales y de emergencia para Air Tractor AT-802 (Agsur Brasil &amp; TTC Inc.). Además, 830 horas de cátedra e instrucción en línea Cessna C-152 y C-172 Skyhawk.
+            </p>
+<!-- Technical Micro-Infographic: Artificial Horizon Mockup -->
+<div class="bg-emerald-50/70 border border-emerald-200/80 rounded-lg p-2.5 my-3 flex items-center justify-between font-mono text-[10px]">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full border border-emerald-600 relative overflow-hidden bg-sky-200">
+<div class="absolute bottom-0 w-full h-1/2 bg-amber-700/60 border-t border-white"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-4 h-0.5 bg-emerald-700"></div>
+</div>
+</div>
+<div>
+<div class="font-bold text-emerald-900">SIMULADOR HOMOLOGADO</div>
+<div class="text-[9px] text-emerald-700">Fallas de turbina y pérdida VSI</div>
+</div>
+</div>
+<span class="bg-white border border-emerald-300 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-bold">STANDARDIZED</span>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-200 font-mono text-xs text-aero-600 flex items-center justify-between">
+<span>Instrucción Impartida:</span>
+<span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">830 HRS</span>
+</div>
+</article>
+<!-- Tarjeta 5: Aspersión Agrícola & SATLOC Lightbar -->
+<article class="bg-white border border-slate-200 hover:border-amber-400 rounded-xl p-7 transition-all duration-300 hover:shadow-md flex flex-col justify-between group" data-purpose="capability-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 group-hover:scale-105 transition-transform">
+<svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9" stroke-width="2"></circle>
+<path d="M12 3v4m0 10v4M3 12h4m10 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-mono text-xs px-2.5 py-1 rounded bg-slate-100 text-aero-800 font-bold border border-slate-300">SATLOC PRECISION</span>
+</div>
+<h3 class="font-display text-xl font-bold text-aero-900 mb-2">Aspersión Aérea &amp; Navegación SATLOC/G4</h3>
+<p class="text-aero-600 text-sm leading-relaxed mb-4">
+              Vuelo de ultra baja altura en geografía montañosa colombiana para misiones de aspersión agrícola y antinarcóticos. Dominio técnico de barras de luces, computadoras de caudal y telemetría de guiado satelital G4.
+            </p>
+<!-- Technical Micro-Infographic: SATLOC Lightbar Emulation -->
+<div class="bg-slate-100 border border-slate-300 rounded-lg p-2.5 my-3 font-mono text-[9px]">
+<div class="flex justify-between font-bold text-aero-800 mb-1.5">
+<span>SATLOC BANTAM / G4 LIGHTBAR</span>
+<span class="text-emerald-700">ON SWATH: 0.0m</span>
+</div>
+<div class="flex items-center justify-center gap-1">
+<span class="w-2.5 h-2 rounded bg-slate-300"></span>
+<span class="w-2.5 h-2 rounded bg-slate-300"></span>
+<span class="w-2.5 h-2 rounded bg-emerald-500"></span>
+<span class="w-3.5 h-3 rounded bg-emerald-600 text-white font-bold flex items-center justify-center">▲</span>
+<span class="w-2.5 h-2 rounded bg-emerald-500"></span>
+<span class="w-2.5 h-2 rounded bg-slate-300"></span>
+<span class="w-2.5 h-2 rounded bg-slate-300"></span>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-200 font-mono text-xs text-aero-600 flex items-center justify-between">
+<span>Aspersión en Montaña:</span>
+<span class="text-aero-900 font-bold bg-slate-100 px-2 py-0.5 rounded border border-slate-300">430 HRS</span>
+</div>
+</article>
+<!-- Tarjeta 6: Seguridad Operacional & SMS Risk Gauge -->
+<article class="bg-white border border-slate-200 hover:border-indigo-400 rounded-xl p-7 transition-all duration-300 hover:shadow-md flex flex-col justify-between group" data-purpose="capability-card">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-lg bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-700 group-hover:scale-105 transition-transform">
+<svg aria-hidden="true" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-mono text-xs px-2.5 py-1 rounded bg-indigo-100 text-indigo-900 font-bold border border-indigo-200">SMS / CRM / ALAR</span>
+</div>
+<h3 class="font-display text-xl font-bold text-aero-900 mb-2">Seguridad Operacional &amp; Factores Humanos</h3>
+<p class="text-aero-600 text-sm leading-relaxed mb-4">
+              Oficial graduado en Seguridad Operacional por la Fuerza Aérea Colombiana (EPFAC). Investigación de incidentes, mitigación de riesgos CFIT, prevención ALAR y administración de programas de CRM y MRM para tripulaciones.
+            </p>
+<!-- Technical Micro-Infographic: SMS Safety Matrix -->
+<div class="bg-indigo-50/70 border border-indigo-200/80 rounded-lg p-2.5 my-3 font-mono text-[9px]">
+<div class="flex justify-between font-bold text-indigo-900 mb-1">
+<span>ICAO SMS RISK INDEX (5x5)</span>
+<span class="text-emerald-700">1A (LOW / MITIGATED)</span>
+</div>
+<div class="flex gap-1">
+<div class="flex-1 bg-emerald-500 h-1.5 rounded-xs"></div>
+<div class="flex-1 bg-emerald-400 h-1.5 rounded-xs"></div>
+<div class="flex-1 bg-amber-400 h-1.5 rounded-xs opacity-50"></div>
+<div class="flex-1 bg-red-400 h-1.5 rounded-xs opacity-30"></div>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-200 font-mono text-xs text-aero-600 flex items-center justify-between">
+<span>Sistemas de Reporte:</span>
+<span class="text-indigo-800 font-bold bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">MOR / SMS</span>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- END: SpecializedCapabilitiesBentoGrid -->
+<!-- BEGIN: FlightLogbookDashboard (Light High-Precision Dashboard) -->
+<section class="py-24 bg-aero-50 border-b border-slate-200 relative" data-purpose="telemetry-dashboard" id="telemetria">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-slate-300">
+<div>
+<div class="font-mono text-xs text-amber-700 tracking-widest uppercase mb-1 font-bold">03 // CERTIFIED FLIGHT LOGBOOK</div>
+<h2 class="font-display text-3xl sm:text-4xl font-bold text-aero-900 tracking-tight">
+            Desglose Técnico de Horas de Vuelo
+          </h2>
+</div>
+<div class="mt-4 md:mt-0 font-mono text-xs text-aero-600 bg-white border border-slate-300 px-3 py-1.5 rounded shadow-xs">
+          ÚLTIMA AUDITORÍA OPERACIONAL: <span class="text-emerald-700 font-bold">VERIFICADA Y CERTIFICADA</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+<!-- Columna Izquierda: Gráfico HUD de Barras Horizontales con Iconografía (7 Cols) -->
+<div class="lg:col-span-7 space-y-6" data-purpose="flight-hours-bars">
+<div class="bg-white border border-slate-200 rounded-xl p-7 shadow-sm">
+<div class="flex items-center justify-between pb-4 mb-6 border-b border-slate-200">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded bg-amber-600"></span>
+<h3 class="font-mono text-xs uppercase tracking-wider text-aero-800 font-bold">Registro de Horas por Equipo y Condición</h3>
+</div>
+<span class="text-amber-700 font-mono font-bold bg-amber-50 px-2.5 py-1 rounded border border-amber-200 text-xs">TOTAL: 5,215 HRS</span>
+</div>
+<!-- Bar 1: Turbina / Tailwheel -->
+<div class="mb-5">
+<div class="flex justify-between items-center text-xs font-mono mb-1.5">
+<span class="text-aero-900 font-semibold flex items-center gap-2">
+<span class="text-amber-600">✈</span> Turbina &amp; Patín de Cola (Tailwheel)
+                </span>
+<span class="text-amber-700 font-bold">3,769 HRS <span class="text-aero-500 font-normal">(72%)</span></span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
+<div class="bg-gradient-to-r from-amber-500 to-amber-600 h-full rounded-full" style="width: 72%"></div>
+</div>
+</div>
+<!-- Bar 2: Multiengine -->
+<div class="mb-5">
+<div class="flex justify-between items-center text-xs font-mono mb-1.5">
+<span class="text-aero-900 font-semibold flex items-center gap-2">
+<span class="text-sky-600">✈✈</span> Multimotor (Multiengine Operations)
+                </span>
+<span class="text-aero-800 font-bold">2,539 HRS <span class="text-aero-500 font-normal">(48%)</span></span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
+<div class="bg-sky-600 h-full rounded-full" style="width: 48%"></div>
+</div>
+</div>
+<!-- Bar 3: DC-3TP -->
+<div class="mb-5">
+<div class="flex justify-between items-center text-xs font-mono mb-1.5">
+<span class="text-aero-900 font-semibold flex items-center gap-2">
+<span class="text-slate-600">🛩</span> Douglas DC-3TP Basler (Primer Oficial)
+                </span>
+<span class="text-aero-800 font-bold">2,147 HRS <span class="text-aero-500 font-normal">(41%)</span></span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
+<div class="bg-slate-700 h-full rounded-full" style="width: 41%"></div>
+</div>
+</div>
+<!-- Bar 4: Instrumentos IFR -->
+<div class="mb-5">
+<div class="flex justify-between items-center text-xs font-mono mb-1.5">
+<span class="text-aero-900 font-semibold flex items-center gap-2">
+<span class="text-indigo-600">☵</span> Vuelo por Instrumentos (IFR Bajo Control)
+                </span>
+<span class="text-aero-800 font-bold">1,100 HRS <span class="text-aero-500 font-normal">(21%)</span></span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
+<div class="bg-indigo-600 h-full rounded-full" style="width: 21%"></div>
+</div>
+</div>
+<!-- Bar 5: C-152 / C-172 -->
+<div class="mb-5">
+<div class="flex justify-between items-center text-xs font-mono mb-1.5">
+<span class="text-aero-900 font-semibold flex items-center gap-2">
+<span class="text-emerald-600">🎓</span> Cessna C-152 / C-172 Skyhawk (Instrucción: 830 hrs)
+                </span>
+<span class="text-aero-800 font-bold">860 HRS <span class="text-aero-500 font-normal">(16%)</span></span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
+<div class="bg-emerald-600 h-full rounded-full" style="width: 16%"></div>
+</div>
+</div>
+<!-- Bar 6: AT-802 Aspersión de Montaña -->
+<div class="mb-5">
+<div class="flex justify-between items-center text-xs font-mono mb-1.5">
+<span class="text-aero-900 font-semibold flex items-center gap-2">
+<span class="text-amber-600">▲</span> AT-802 Aspersión Agrícola &amp; ISR en Montaña
+                </span>
+<span class="text-amber-800 font-bold">430 HRS <span class="text-aero-500 font-normal">(8.2%)</span></span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
+<div class="bg-amber-500 h-full rounded-full" style="width: 8.2%"></div>
+</div>
+</div>
+<!-- Bar 7: AT-802 Formación en Equipo -->
+<div class="mb-5">
+<div class="flex justify-between items-center text-xs font-mono mb-1.5">
+<span class="text-aero-900 font-semibold flex items-center gap-2">
+<span class="text-red-600">🔥</span> AT-802 Vuelo en Formación Táctica
+                </span>
+<span class="text-red-700 font-bold">420 HRS <span class="text-aero-500 font-normal">(8.0%)</span></span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
+<div class="bg-red-600 h-full rounded-full" style="width: 8.0%"></div>
+</div>
+</div>
+<!-- Bar 8: AT-802 Piloto de Pruebas MTP -->
+<div class="mb-5">
+<div class="flex justify-between items-center text-xs font-mono mb-1.5">
+<span class="text-aero-900 font-semibold flex items-center gap-2">
+<span class="text-amber-700">⚙</span> AT-802 MTP (Vuelos de Prueba y Evaluación)
+                </span>
+<span class="text-amber-800 font-bold">265 HRS <span class="text-aero-500 font-normal">(5.0%)</span></span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
+<div class="bg-amber-600 h-full rounded-full" style="width: 5.0%"></div>
+</div>
+</div>
+<!-- Bar 9: Piper Navajo PA-31 -->
+<div>
+<div class="flex justify-between items-center text-xs font-mono mb-1.5">
+<span class="text-aero-900 font-semibold flex items-center gap-2">
+<span class="text-slate-500">🛫</span> Piper Navajo PA-31 (Piloto al Mando PIC)
+                </span>
+<span class="text-aero-700 font-bold">91 HRS <span class="text-aero-500 font-normal">(1.7%)</span></span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200">
+<div class="bg-slate-400 h-full rounded-full" style="width: 1.7%"></div>
+</div>
+</div>
+</div>
+<!-- New Visual Graphic: Donut Chart Distribution Breakdown -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-6">
+<!-- Visual Donut Chart SVG -->
+<div class="relative w-28 h-28 shrink-0 flex items-center justify-center">
+<svg class="w-28 h-28 transform -rotate-90" viewbox="0 0 36 36">
+<!-- Background Circle -->
+<circle cx="18" cy="18" fill="none" r="15.915" stroke="#F1F5F9" stroke-width="3.8"></circle>
+<!-- Segment 1: Turbina (Amber) 72% -->
+<circle cx="18" cy="18" fill="none" r="15.915" stroke="#D97706" stroke-dasharray="72 28" stroke-dashoffset="0" stroke-width="3.8"></circle>
+<!-- Segment 2: DC-3 Multimotor (Sky) 41% overlaid relative -->
+<circle cx="18" cy="18" fill="none" r="15.915" stroke="#0284C7" stroke-dasharray="20 80" stroke-dashoffset="-72" stroke-width="3.8"></circle>
+<!-- Segment 3: Instrucción (Emerald) 16% -->
+<circle cx="18" cy="18" fill="none" r="15.915" stroke="#059669" stroke-dasharray="8 92" stroke-dashoffset="-92" stroke-width="3.8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center font-mono">
+<span class="text-xs font-bold text-aero-900">5,215</span>
+<span class="text-[9px] text-aero-500">HRS TOT</span>
+</div>
+</div>
+<div>
+<h4 class="font-display font-bold text-sm text-aero-900 mb-1">Distribución Operativa del Mando</h4>
+<p class="text-xs text-aero-600 mb-3">Concentración técnica preponderante en propulsión turbohélice de alta potencia.</p>
+<div class="grid grid-cols-2 gap-2 text-[10px] font-mono">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span> Turbina (72%)</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-sky-600"></span> Multimotor (48%)</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span> Instrucción (16%)</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-600"></span> SEAT / MTP (13%)</span>
+</div>
+</div>
+</div>
+<div class="border-t sm:border-t-0 sm:border-l border-slate-200 pt-4 sm:pt-0 sm:pl-6 text-center sm:text-right w-full sm:w-auto shrink-0 font-mono">
+<span class="text-[10px] text-aero-500 uppercase block">Bitácora Aerocivil</span>
+<span class="text-emerald-700 font-bold text-xs inline-flex items-center gap-1 mt-1">
+<svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path></svg>
+                LIBRO FOLIADO
+              </span>
+</div>
+</div>
+</div>
+<!-- Columna Derecha: Tarjetas Estilo Credencial Plastificada / Chip Digital (5 Cols) -->
+<div class="lg:col-span-5 space-y-6" data-purpose="licenses-and-ratings">
+<!-- Credencial Piloto Comercial / Militar -->
+<div class="bg-white border-2 border-slate-200 rounded-xl p-6 shadow-sm relative overflow-hidden">
+<!-- Top Chip & Security Hologram Strip -->
+<div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-200">
+<div class="flex items-center gap-2">
+<!-- Smart Chip Vector -->
+<div class="w-9 h-7 rounded bg-gradient-to-br from-amber-200 to-amber-400 border border-amber-500/60 p-1 flex flex-col justify-between shadow-inner">
+<div class="border-b border-amber-600/40 h-1"></div>
+<div class="border-b border-amber-600/40 h-1"></div>
+</div>
+<div>
+<span class="font-mono text-[10px] text-aero-500 tracking-wider block">ICAO / AEROCIVIL ID: COL-PCA-MTP-802</span>
+<span class="font-display font-bold text-xs text-aero-900 uppercase">Licencia Oficial &amp; Habilitaciones</span>
+</div>
+</div>
+<span class="w-7 h-7 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-700 text-xs font-bold" title="Acreditación Vigente">✓</span>
+</div>
+<ul class="space-y-3 font-mono text-xs">
+<li class="p-3 bg-aero-50 rounded-lg border border-slate-200 flex items-center justify-between">
+<div>
+<span class="text-aero-900 font-bold block">Licencia Piloto Comercial (PCA) / Militar</span>
+<span class="text-aero-500 text-[11px]">Aerocivil Colombia &amp; Aviación Militar (FAC / PNC)</span>
+</div>
+<span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 border border-emerald-300 rounded text-[10px] font-bold">VIGENTE</span>
+</li>
+<li class="p-3 bg-amber-50/60 rounded-lg border border-amber-200 flex items-center justify-between">
+<div>
+<span class="text-aero-900 font-bold block">Habilitación Tipo Air Tractor AT-802</span>
+<span class="text-amber-800 text-[11px]">MTP, SEAT, Instructor y Patín de Cola</span>
+</div>
+<span class="px-2 py-0.5 bg-amber-100 text-amber-900 border border-amber-300 rounded text-[10px] font-bold">CURRENT</span>
+</li>
+<li class="p-3 bg-aero-50 rounded-lg border border-slate-200 flex items-center justify-between">
+<div>
+<span class="text-aero-900 font-bold block">Habilitación Multimotor &amp; IFR</span>
+<span class="text-aero-500 text-[11px]">Basler DC-3TP &amp; Piper PA-31 Navajo</span>
+</div>
+<span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 border border-emerald-300 rounded text-[10px] font-bold">CERTIFIED</span>
+</li>
+</ul>
+</div>
+<!-- Panel Competencia Lingüística con Radial Gauges & Academia -->
+<div class="bg-white border-2 border-slate-200 rounded-xl p-6 shadow-sm">
+<div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-200">
+<svg aria-hidden="true" class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<h3 class="font-display font-bold text-base text-aero-900">Competencia Lingüística &amp; Academia</h3>
+</div>
+<div class="space-y-3 font-mono text-xs">
+<!-- Radial Level 4 OACI -->
+<div class="p-3 bg-aero-50 rounded-lg border border-slate-200 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 flex items-center justify-center shrink-0">
+<svg class="w-10 h-10" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="15" stroke="#E2E8F0" stroke-width="3"></circle>
+<circle class="gauge-circle" cx="18" cy="18" fill="none" r="15" stroke="#D97706" stroke-dashoffset="25" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute font-bold text-[10px] text-amber-700">4</span>
+</div>
+<div>
+<span class="text-aero-900 font-bold block">Competencia Lingüística OACI / ICAO</span>
+<span class="text-aero-500 text-[11px]">Inglés Operacional Aeronáutico</span>
+</div>
+</div>
+<span class="text-amber-800 font-mono font-bold text-xs bg-amber-100 px-2 py-1 rounded border border-amber-300">NIVEL 4</span>
+</div>
+<!-- British Council B2 -->
+<div class="p-3 bg-aero-50 rounded-lg border border-slate-200 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 flex items-center justify-center shrink-0">
+<svg class="w-10 h-10" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="15" stroke="#E2E8F0" stroke-width="3"></circle>
+<circle class="gauge-circle" cx="18" cy="18" fill="none" r="15" stroke="#0284C7" stroke-dashoffset="35" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute font-bold text-[9px] text-sky-700">B2</span>
+</div>
+<div>
+<span class="text-aero-900 font-bold block">British Council APTIS</span>
+<span class="text-aero-500 text-[11px]">Evaluación Estándar Internacional</span>
+</div>
+</div>
+<span class="text-sky-800 font-mono font-bold text-xs bg-sky-100 px-2 py-1 rounded border border-sky-300">NIVEL B2 CEFR</span>
+</div>
+<!-- Grado Policial & Administrador Aeronáutico -->
+<div class="p-3 bg-aero-50 rounded-lg border border-slate-200">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-aero-700 font-bold">🎖 Oficial de Policía &amp; Administrador Aeronáutico</span>
+</div>
+<span class="text-aero-600 text-[11px] block">Escuela de Cadetes de Policía 'General Santander' &amp; Escuela de Aviación Policial (ESAVI)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FlightLogbookDashboard -->
+<!-- BEGIN: CommandTrajectoryTimeline (Light Clean Technical Tree) -->
+<section class="py-24 bg-white relative border-b border-slate-200" data-purpose="career-timeline" id="trayectoria">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="text-center mb-16">
+<div class="font-mono text-xs text-amber-700 tracking-widest uppercase mb-1 font-bold">04 // OPERATIONAL TIMELINE</div>
+<h2 class="font-display text-3xl sm:text-4xl font-bold text-aero-900 tracking-tight">
+          Trayectoria de Mando y Servicio Operacional
+        </h2>
+<p class="text-aero-600 text-sm sm:text-base mt-2 max-w-2xl mx-auto font-normal">
+          Historial de asignaciones tácticas, cargos de dirección de mantenimiento y liderazgo en misiones gubernamentales e internacionales.
+        </p>
+</div>
+<!-- Vertical Timeline Tree with Radar Pulse Nodes -->
+<div class="relative border-l-2 border-slate-300 ml-4 md:ml-32 space-y-12">
+<!-- Node 1 -->
+<div class="relative pl-8 md:pl-10">
+<div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-white shadow-md">
+<span class="animate-ping absolute inset-0 rounded-full bg-amber-400 opacity-75"></span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-1">
+<span class="font-mono text-xs text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded font-bold">2021 – PRESENTE</span>
+<h3 class="font-display text-lg font-bold text-aero-900">Piloto de Mantenimiento, Estandarización e Instructor AT-802</h3>
+</div>
+<div class="text-xs font-mono text-aero-500 mb-2 font-semibold">Dirección de Antinarcóticos – Aviación Policial (ARAVI)</div>
+<p class="text-aero-600 text-sm leading-relaxed bg-aero-50 border border-slate-200 p-4 rounded-lg shadow-xs">
+            Comandante de misión y piloto SEAT en contingencias nacionales de incendios forestales. Responsable directo de vuelos de prueba de mantenimiento (MTP), estandarización de procedimientos operativos y refrescamiento en simulador de tripulaciones AT-802.
+          </p>
+</div>
+<!-- Node 2 -->
+<div class="relative pl-8 md:pl-10">
+<div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-aero-600 border-4 border-white shadow-md"></div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-1">
+<span class="font-mono text-xs text-aero-700 bg-slate-100 border border-slate-300 px-2 py-0.5 rounded font-bold">2016 – PRESENTE</span>
+<h3 class="font-display text-lg font-bold text-aero-900">Oficial de Mantenimiento Aeronáutico &amp; Comandante de Escuadrilla</h3>
+</div>
+<div class="text-xs font-mono text-aero-500 mb-2 font-semibold">División Aérea de la Policía Nacional de Colombia</div>
+<p class="text-aero-600 text-sm leading-relaxed bg-aero-50 border border-slate-200 p-4 rounded-lg shadow-xs">
+            Gestión gerencial y técnica sobre el mantenimiento programado y correctivo de la flota. Control de reportes de mantenimiento operacional (MOR), liderazgo de comités SST, auditorías bajo estándares internacionales y administración de talento humano especializado.
+          </p>
+</div>
+<!-- Node 3 -->
+<div class="relative pl-8 md:pl-10">
+<div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-red-600 border-4 border-white shadow-md"></div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-1">
+<span class="font-mono text-xs text-red-700 bg-red-50 border border-red-200 px-2 py-0.5 rounded font-bold">2016 – 2022</span>
+<h3 class="font-display text-lg font-bold text-aero-900">Piloto MTP, SEAT &amp; Operaciones Especiales AT-802</h3>
+</div>
+<div class="text-xs font-mono text-aero-500 mb-2 font-semibold">U.S. Department of State INL Air Wing &amp; Policía Nacional</div>
+<p class="text-aero-600 text-sm leading-relaxed bg-aero-50 border border-slate-200 p-4 rounded-lg shadow-xs">
+            Ejecución de más de 400 horas de aspersión y maniobras tácticas de montaña con tecnología SATLOC. Ejecución de vuelos de prueba posmantenimiento para el programa conjunto bilateral INL-PNC.
+          </p>
+</div>
+<!-- Node 4 -->
+<div class="relative pl-8 md:pl-10">
+<div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-aero-500 border-4 border-white shadow-md"></div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-1">
+<span class="font-mono text-xs text-aero-600 bg-slate-100 border border-slate-300 px-2 py-0.5 rounded font-bold">2017 – 2020</span>
+<h3 class="font-display text-lg font-bold text-aero-900">Piloto Instructor Cessna C-152 / C-172 &amp; Piloto al Mando PA-31</h3>
+</div>
+<div class="text-xs font-mono text-aero-500 mb-2 font-semibold">Escuela de Aviación Policial (ESAVI)</div>
+<p class="text-aero-600 text-sm leading-relaxed bg-aero-50 border border-slate-200 p-4 rounded-lg shadow-xs">
+            Formación inicial y avanzada de nuevos aviadores policiales con 830 horas impartidas en instrucción de vuelo visual y por instrumentos, además de misiones de enlace y transporte VIP en Piper Navajo PA-31.
+          </p>
+</div>
+<!-- Node 5 -->
+<div class="relative pl-8 md:pl-10">
+<div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-aero-500 border-4 border-white shadow-md"></div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-1">
+<span class="font-mono text-xs text-aero-600 bg-slate-100 border border-slate-300 px-2 py-0.5 rounded font-bold">2013 – 2015</span>
+<h3 class="font-display text-lg font-bold text-aero-900">Oficial de Seguridad Operacional y Seguridad de Vuelo</h3>
+</div>
+<div class="text-xs font-mono text-aero-500 mb-2 font-semibold">Fuerza Aérea Colombiana / Policía Nacional</div>
+<p class="text-aero-600 text-sm leading-relaxed bg-aero-50 border border-slate-200 p-4 rounded-lg shadow-xs">
+            Coordinador de auditorías SMS, análisis de factores contribuyentes en incidentes de aviación militar, conferencista institucional en prevención de accidentes y mitigación de desorientación espacial.
+          </p>
+</div>
+<!-- Node 6 -->
+<div class="relative pl-8 md:pl-10">
+<div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-aero-400 border-4 border-white shadow-md"></div>
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-1">
+<span class="font-mono text-xs text-aero-600 bg-slate-100 border border-slate-300 px-2 py-0.5 rounded font-bold">2011 – 2015</span>
+<h3 class="font-display text-lg font-bold text-aero-900">Primer Oficial Multimotor Douglas DC-3TP Basler</h3>
+</div>
+<div class="text-xs font-mono text-aero-500 mb-2 font-semibold">Aviación Policial de Colombia</div>
+<p class="text-aero-600 text-sm leading-relaxed bg-aero-50 border border-slate-200 p-4 rounded-lg shadow-xs">
+            2,147 horas de vuelo operacional en misiones logísticas de transporte pesado de tropa, carga y reabastecimiento en pistas no preparadas y bajo condiciones meteorológicas adversas en la selva colombiana.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: CommandTrajectoryTimeline -->
+<!-- BEGIN: InternationalTrainingGrid (Light Geographic Badges) -->
+<section class="py-24 bg-aero-50 border-b border-slate-200" data-purpose="certifications-grid" id="certificaciones">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center sm:text-left mb-16">
+<div class="font-mono text-xs text-amber-700 tracking-widest uppercase mb-1 font-bold">05 // CREDENTIALS &amp; SIMULATORS</div>
+<h2 class="font-display text-3xl sm:text-4xl font-bold text-aero-900 tracking-tight">
+          Entrenamiento Internacional &amp; Certificaciones
+        </h2>
+<p class="text-aero-600 text-sm sm:text-base mt-2 max-w-2xl font-normal">
+          Formación especializada de alto nivel en centros de entrenamiento aeronáutico de Estados Unidos, Brasil y Colombia.
+        </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-slate-400 hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200 font-bold inline-flex items-center gap-1">
+              🇺🇸 ESTADOS UNIDOS
+            </span>
+<span class="text-xs font-mono text-aero-500 font-semibold">KANSAS</span>
+</div>
+<h3 class="font-display font-bold text-base text-aero-900 mb-1">Turbine Training Center Inc.</h3>
+<p class="text-xs text-amber-700 font-mono font-semibold mb-2">Entrenamiento Recurrente AT-802</p>
+<p class="text-aero-600 text-xs leading-relaxed">
+            Procedimientos de emergencia, fallas de turbina en despegue, gestión de envolvente aerodinámica y vuelo con carga máxima.
+          </p>
+</div>
+<!-- Card 2 -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-slate-400 hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold inline-flex items-center gap-1">
+              🇧🇷 BRASIL
+            </span>
+<span class="text-xs font-mono text-aero-500 font-semibold">AGSUR BRASIL</span>
+</div>
+<h3 class="font-display font-bold text-base text-aero-900 mb-1">Agsur Brasil</h3>
+<p class="text-xs text-amber-700 font-mono font-semibold mb-2">Instructor AT-802 &amp; Simulador de Vuelo</p>
+<p class="text-aero-600 text-xs leading-relaxed">
+            Metodología de instrucción, estandarización de cabina y procedimientos de emergencia en simulador homologado AT-802.
+          </p>
+</div>
+<!-- Card 3 -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-slate-400 hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200 font-bold inline-flex items-center gap-1">
+              🇺🇸 ESTADOS UNIDOS
+            </span>
+<span class="text-xs font-mono text-aero-500 font-semibold">TEXAS</span>
+</div>
+<h3 class="font-display font-bold text-base text-aero-900 mb-1">Center Leader Aviation</h3>
+<p class="text-xs text-amber-700 font-mono font-semibold mb-2">CFIT, ALAR &amp; Cockpit Resource Management</p>
+<p class="text-aero-600 text-xs leading-relaxed">
+            Prevención de impacto contra el terreno sin pérdida de control (CFIT), aproximación segura y mitigación de distracción de cabina.
+          </p>
+</div>
+<!-- Card 4 -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-slate-400 hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200 font-bold inline-flex items-center gap-1">
+              🇺🇸 ESTADOS UNIDOS
+            </span>
+<span class="text-xs font-mono text-aero-500 font-semibold">FLORIDA</span>
+</div>
+<h3 class="font-display font-bold text-base text-aero-900 mb-1">Endeavour Flight Training Inc.</h3>
+<p class="text-xs text-amber-700 font-mono font-semibold mb-2">Simulador Avanzado IFR &amp; Procedimientos</p>
+<p class="text-aero-600 text-xs leading-relaxed">
+            Navegación instrumental avanzada, aproximaciones de no precisión, RNAV/RNP y operaciones en espacio aéreo de alta densidad.
+          </p>
+</div>
+<!-- Card 5 -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-slate-400 hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200 font-bold inline-flex items-center gap-1">
+              🇨🇴 COLOMBIA
+            </span>
+<span class="text-xs font-mono text-aero-500 font-semibold">EPFAC BOGOTÁ</span>
+</div>
+<h3 class="font-display font-bold text-base text-aero-900 mb-1">Escuela de Postgrados FAC</h3>
+<p class="text-xs text-amber-700 font-mono font-semibold mb-2">Seguridad Operacional &amp; Prevención Accidentes</p>
+<p class="text-aero-600 text-xs leading-relaxed">
+            Diplomado en Gestión de Riesgo Aéreo, auditorías operacionales, análisis de caja negra y factores humanos en la aviación militar.
+          </p>
+</div>
+<!-- Card 6 -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 hover:border-slate-400 hover:shadow-md transition-all">
+<div class="flex items-center justify-between mb-3">
+<span class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200 font-bold inline-flex items-center gap-1">
+              🇨🇴 COLOMBIA
+            </span>
+<span class="text-xs font-mono text-aero-500 font-semibold">ACADEMIA TÉCNICA</span>
+</div>
+<h3 class="font-display font-bold text-base text-aero-900 mb-1">Colombian Aeronautical College</h3>
+<p class="text-xs text-amber-700 font-mono font-semibold mb-2">Mantenimiento de Línea Turboprop PT6-67AG</p>
+<p class="text-aero-600 text-xs leading-relaxed">
+            Diagnóstico boroscópico, ajuste de gobernadores, balance dinámico de hélices Hartzell e inspecciones de sección caliente.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: InternationalTrainingGrid -->
+<!-- BEGIN: ExecutiveContactAndFooter (Flight Plan Dispatch Design) -->
+<section class="py-24 bg-white relative" data-purpose="executive-contact" id="contacto">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Columna Información Institucional & Garantía (5 cols) -->
+<div class="lg:col-span-5 space-y-6">
+<div>
+<div class="font-mono text-xs text-amber-700 tracking-widest uppercase mb-1 font-bold">CANAL OFICIAL // DOSSIER REQUEST</div>
+<h2 class="font-display text-3xl sm:text-4xl font-bold text-aero-900 tracking-tight">
+              Contacto Operativo &amp; Verificación
+            </h2>
+<p class="text-aero-600 text-sm mt-3 leading-relaxed">
+              Disponible para convocatorias operacionales como Piloto de Extinción de Incendios (SEAT), Piloto de Pruebas (MTP), consultorías en mantenimiento de línea PT-6 y programas de instrucción aeronáutica a nivel internacional.
+            </p>
+</div>
+<!-- Box de Garantía Institucional con Relieve Técnico -->
+<div class="p-5 rounded-xl bg-aero-50 border-2 border-amber-200/90 font-mono text-xs text-aero-700 space-y-2.5 shadow-sm">
+<div class="flex items-center gap-2 text-amber-800 font-bold text-xs uppercase">
+<svg aria-hidden="true" class="w-4 h-4 text-amber-700" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              VERIFICABILIDAD &amp; SEGURIDAD OPERACIONAL
+            </div>
+<p class="text-aero-600 leading-relaxed">
+              Bitácoras foliadas, certificaciones de la Autoridad Aeronáutica Colombiana (Aerocivil), registros del Departamento de Estado (INL) y licencias militares originales disponibles para auditoría bajo solicitud corporativa formal.
+            </p>
+</div>
+<!-- Datos Directos -->
+<div class="space-y-3 font-mono text-xs pt-2">
+<div class="flex items-center gap-3 text-aero-700 bg-white border border-slate-200 p-3 rounded-lg shadow-xs">
+<span class="w-8 h-8 rounded bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 shrink-0">
+<svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
+<span>Base: Bogotá D.C., Colombia (Disponibilidad de comisión internacional)</span>
+</div>
+<div class="flex items-center gap-3 text-aero-700 bg-white border border-slate-200 p-3 rounded-lg shadow-xs">
+<span class="w-8 h-8 rounded bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 shrink-0">
+<svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</span>
+<span class="font-semibold text-aero-900 break-all">comunicaciones.operativas@carrero-at802.aero</span>
+</div>
+</div>
+</div>
+<!-- Columna Formulario Estilo Flight Plan Dispatch (7 cols) -->
+<div class="lg:col-span-7">
+<div class="bg-white border-2 border-slate-300 rounded-xl p-8 shadow-md blueprint-corner" data-purpose="contact-form-container">
+<div class="flex items-center justify-between pb-4 mb-6 border-b border-slate-200">
+<div>
+<span class="text-[10px] font-mono text-amber-700 uppercase font-bold">ICAO FLIGHT PLAN FORMAT // FP-802</span>
+<h3 class="font-display font-bold text-xl text-aero-900">
+                  Formulario de Consulta Operativa &amp; Solicitud de Dossier
+                </h3>
+</div>
+<span class="text-xs font-mono bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded font-bold">SECURE SSL</span>
+</div>
+<form action="#" class="space-y-4" method="POST" onsubmit="event.preventDefault(); alert('Solicitud registrada. El enlace cifrado del dossier operacional será remitido tras confirmación.');">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block font-mono text-xs text-aero-700 font-bold uppercase mb-1" for="full-name">Nombre Completo / Rango</label>
+<input class="w-full bg-aero-50 border border-slate-300 rounded px-3 py-2 text-sm text-aero-900 placeholder-slate-400 focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-600 font-sans" id="full-name" placeholder="Ej: Cap. Roberto Martínez" required="" type="text"/>
+</div>
+<div>
+<label class="block font-mono text-xs text-aero-700 font-bold uppercase mb-1" for="organization">Organización / Operador Aéreo</label>
+<input class="w-full bg-aero-50 border border-slate-300 rounded px-3 py-2 text-sm text-aero-900 placeholder-slate-400 focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-600 font-sans" id="organization" placeholder="Ej: Air Fire Tankers Corp." required="" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block font-mono text-xs text-aero-700 font-bold uppercase mb-1" for="email">Correo Electrónico Corporativo</label>
+<input class="w-full bg-aero-50 border border-slate-300 rounded px-3 py-2 text-sm text-aero-900 placeholder-slate-400 focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-600 font-sans" id="email" placeholder="usuario@operador.com" required="" type="email"/>
+</div>
+<div>
+<label class="block font-mono text-xs text-aero-700 font-bold uppercase mb-1" for="operation-type">Tipo de Consulta / Misión</label>
+<select class="w-full bg-aero-50 border border-slate-300 rounded px-3 py-2 text-sm text-aero-900 focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-600 font-sans" id="operation-type">
+<option value="seat">Operaciones SEAT / Combate de Incendios</option>
+<option value="mtp">Piloto de Pruebas (MTP) &amp; Estandarización</option>
+<option value="instruccion">Instrucción en Línea AT-802 / Simulador</option>
+<option value="mantenimiento">Consultoría Mantenimiento PT-6 / Auditoría SMS</option>
+<option value="otro">Revisión de Dossier Completo / Otro</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block font-mono text-xs text-aero-700 font-bold uppercase mb-1" for="message">Mensaje Operacional / Requerimientos</label>
+<textarea class="w-full bg-aero-50 border border-slate-300 rounded px-3 py-2 text-sm text-aero-900 placeholder-slate-400 focus:outline-none focus:border-amber-600 focus:ring-1 focus:ring-amber-600 font-sans" id="message" placeholder="Detalle alcance de la operación, base requerida, temporalidad y especificaciones técnicas..." required="" rows="4"></textarea>
+</div>
+<div class="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+<div class="text-[11px] font-mono text-aero-500 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span> Canal Cifrado Directo P2P
+                </div>
+<button class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-white bg-amber-600 hover:bg-amber-500 active:bg-amber-700 transition-all rounded shadow-md" type="submit">
+<svg aria-hidden="true" class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                  Transmitir Mensaje
+                </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ExecutiveContactAndFooter -->
+</main>
+<!-- BEGIN: MilitaryAviationFooter (Light Clean Dossier) -->
+<footer class="bg-aero-50 border-t border-slate-300 py-10 font-mono text-xs text-aero-600" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-200">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded bg-white border border-amber-500/50 flex items-center justify-center font-bold text-amber-700 shadow-xs">
+          LC
+        </div>
+<div>
+<div class="text-aero-900 font-bold tracking-wide">TC. LUIS ANDERSON CARRERO PÉREZ</div>
+<div class="text-[10px] text-aero-500 tracking-wider">AIR TRACTOR AT-802 PIC // MTP // INSTRUCTOR // SEAT</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-6 text-[11px]">
+<span class="text-aero-500">ICAO ID: <strong class="text-aero-800">COL-PCA-MTP-802</strong></span>
+<span class="text-aero-500">ESTADO: <strong class="text-emerald-700 font-bold">OPERATIONAL / ACTIVE</strong></span>
+<span class="text-aero-500">REG: <strong class="text-aero-800">BOG / COLOMBIA</strong></span>
+</div>
+</div>
+<div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-aero-500">
+<div>
+        © <span id="current-year"></span> TC. Luis Anderson Carrero Pérez. Registro y Bitácoras de Vuelo Reservados conforme a normatividad aeronáutica.
+      </div>
+<div class="flex items-center gap-2">
+<span>UTC TIMESTAMP:</span>
+<span class="text-amber-800 font-mono font-bold bg-white border border-slate-300 px-2 py-0.5 rounded shadow-xs" id="utc-clock">18:42:15 ZULU</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MilitaryAviationFooter -->
+<!-- BEGIN: Operational Zulu Clock Script -->
+<script data-purpose="zulu-clock">
+  function updateZuluTime() {
+    const now = new Date();
+    const hours = String(now.getUTCHours()).padStart(2, '0');
+    const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+    const seconds = String(now.getUTCSeconds()).padStart(2, '0');
+    const clockElement = document.getElementById('utc-clock');
+    if (clockElement) {
+      clockElement.textContent = `${hours}:${minutes}:${seconds} ZULU`;
+    }
+  }
+  setInterval(updateZuluTime, 1000);
+  updateZuluTime();
+
+  // Set current year
+  const yearEl = document.getElementById('current-year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+</script>
+<!-- END: Operational Zulu Clock Script -->
+</body></html>
